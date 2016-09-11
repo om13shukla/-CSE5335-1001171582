@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1 My Store
+  body
+    #form-container1(style='width:600; margin:auto')
+        #login.center-vertical
+            form.well(id='form-login', method='post', action='/',novalidate)
+                h3 Register as a New User
+                h6 Please Enter your Account Information
+            .form-group
+                label Username
+                input.form-control(type='text', id='user-tf',placeholder='Your Name', name='user',class='form-control', required)
+            .form-group
+                label Email 
+                input.form-control(type='text', id='email-tf',placeholder='Your Email', name='email',class='form-control', required)
+            .form-group
+                label Password
+                input.form-control(type='password', id='pass-tf',placeholder='Password', name='pass',class='form-control' ,required)
+            .form-group
+                label Password
+                input.form-control(type='password', id='passr-tf',placeholder='Confirm Password', name='passr',class='form-control', required)    
+            .controls
+                button(type='submit').btn.btn-primary.button-sign-in
+                    span.glyphicon.glyphicon-lock
+                    | Register
+                .clearfix
+                    a(href='/') Log in
+                    
+
