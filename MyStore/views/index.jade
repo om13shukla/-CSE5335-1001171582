@@ -1,10 +1,13 @@
 extends layout
 
 block content
-  h1 My Store
+  
   body
-    #form-container1(style='width:400; margin:auto')
-        #login.center-vertical
+  div(ng-controller='AppCtrl')
+   
+    div(ng-view)
+        #form-container1(style='width:400; margin:auto' action='/home')
+            #login.center-vertical
             form.well(id='form-login', method='post')
                 h2 Hello!
                 h6 Please Login To Your Account
