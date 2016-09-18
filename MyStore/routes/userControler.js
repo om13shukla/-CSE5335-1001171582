@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var userService = require('./userService');
-//var config = require('config.json');
+var config = require('./config.json');
 var chalk = require('chalk');
 
 
@@ -35,9 +35,9 @@ function authenticateUser(req, res) {
 }
 
 function registerUser(req, res) {
-    console.log(chalk.red("routed to userContrlr in registerUser() -- calling userService"));
+    console.log(chalk.red("routed to userContrlr in registerUser() -- calling userService.create()"));
     
-    userService.create(req.body)
+    userService.service.create(req.body)
         .then(function () {
             res.sendStatus(200);
         })

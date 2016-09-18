@@ -6,7 +6,7 @@ block content
     #form-container1(style='width:500; margin:auto')
         #login.center-vertical
         
-        form( method='post')
+        form.well( method='post')
                 h3 Register as a New User
                 h6 Please Enter your Account Information
                 
@@ -17,7 +17,7 @@ block content
                 input.form-control(type='text', id='email',placeholder='Your Email', name='email',class='form-control', required)
                 
                 label Password
-                input.form-control(type='password', id='pass',placeholder='Password', name='pass',class='form-control' ,required)
+                input.form-control(type='password', id='password',placeholder='Password', name='password',class='form-control' ,required)
                
                 button(type='submit').btn.btn-primary.button-sign-in
                     | Register

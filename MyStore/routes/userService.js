@@ -1,9 +1,10 @@
-//var config = require('config.json');
+var config = require('./config.json');
 var _ = require('lodash');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
 var mongo = require('mongoskin');
+var chalk = require('chalk');
 var db = mongo.db("mongodb://localhost:27017/db-1", { native_parser: true });
 db.bind('users');
 
@@ -14,6 +15,8 @@ service.getById = getById;
 service.create = create;
 service.update = update;
 service.delete = _delete;
+
+console.log(chalk.green("REACHED in userService")); //debug purposes
 
 module.exports = service;
 
@@ -118,8 +121,6 @@ function update(_id, userParam) {
     function updateUser() {
         // fields to update
         var set = {
-            firstName: userParam.firstName,
-            lastName: userParam.lastName,
             username: userParam.username,
         };
 
