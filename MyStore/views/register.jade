@@ -9,9 +9,17 @@ block content
         form.well( method='post')
                 h3 Register as a New User
                 h6 Please Enter your Account Information
-                
+                if error
+                    #error-msg(style='width:460; margin: auto; padding:10; background-color:#f22; color:#fff')
+                        h4 #{error}
                 label UserName
                 input.form-control(type='text', id='username',placeholder='Your Name', name='username',class='form-control', required)
+               
+                label First Name
+                input.form-control(type='text', id='firstName', name='firstName', required)
+                
+                label Last Name
+                input.form-control(type='text', id='lastName', name='lastName', required)
                 
                 label Email 
                 input.form-control(type='text', id='email',placeholder='Your Email', name='email',class='form-control', required)
@@ -22,6 +30,6 @@ block content
                 button(type='submit').btn.btn-primary.button-sign-in
                     | Register
                 .clearfix
-                    a(href='/') Log in
+                    a(href='/index') Log in
                     
 

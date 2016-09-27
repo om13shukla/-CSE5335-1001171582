@@ -1,21 +1,24 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
+var expressJwt = require('express-jwt');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var chalk = require('chalk');
+var session = require('express-session'); 
+var config=require('./config.json');
 
 //var validator = require('express-validator');
 
 
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var register = require('./routes/register');
 var home = require('./routes/home');
 var userService = require( './routes/userService');
 
 var userControler= require('./routes/userControler');
-   
+var appController= require('./routes/appController');   
 
 var app = express();
 
@@ -30,12 +33,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
 
-app.use('/', routes);
+/*app.use('/', function (req, res) {
+    return res.redirect('/app');
+});*/
+
+app.use('/index', index);
+
 app.use('/register', register);
-app.use('/home', home);
-
+app.use('/', home);
+//app.use('/', appController);
 app.use('/api/users', userControler);
+
+
+// use JWT auth to secure the api
+//app.use('/home', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register']}));
 
 
 // catch 404 and forward to error handler

@@ -4,7 +4,11 @@ var request = require('request');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'My Store' });
+    delete req.session.token;
+    
+    var viewData = { success: req.session.success };
+    delete req.session.success;
+  res.render('index', viewData);
 });
 
 router.post('/', function (req, res) {

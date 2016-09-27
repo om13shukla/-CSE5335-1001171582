@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-//var config=require('config.json');
+var config=require('./config.json');
 var request = require('request');
 var chalk = require('chalk');
 
@@ -27,12 +27,13 @@ router.post('/', function (req, res) {
             return res.render('register', {
                 error: response.body,
                 username: req.body.username
+                
             });
         }
 
         // return to login page with success message
         req.session.success = 'Registration successful';
-        return res.redirect('/login');
+        return res.redirect('/index');
     });
 });
 

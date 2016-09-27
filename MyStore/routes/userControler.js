@@ -17,7 +17,7 @@ router.delete('/:_id', deleteUser);
 module.exports = router;
 
 function authenticateUser(req, res) {
-    console.log(chalk.green("In the userControl  AUTH()- calling user service next"));
+    console.log(chalk.red("In the userControl  AUTH()- calling user service next"));
     
     userService.authenticate(req.body.username, req.body.password)
         .then(function (token) {
@@ -37,7 +37,7 @@ function authenticateUser(req, res) {
 function registerUser(req, res) {
     console.log(chalk.red("routed to userContrlr in registerUser() -- calling userService.create()"));
     
-    userService.service.create(req.body)
+    userService.create(req.body)
         .then(function () {
             res.sendStatus(200);
         })

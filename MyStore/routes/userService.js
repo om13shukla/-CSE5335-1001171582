@@ -16,19 +16,20 @@ service.create = create;
 service.update = update;
 service.delete = _delete;
 
-console.log(chalk.green("REACHED in userService")); //debug purposes
+
 
 module.exports = service;
 
 function authenticate(username, password) {
     var deferred = Q.defer();
-    console.log(chalk.green("REACHED in authenticate() --> userService"));
+    console.log(chalk.green("REACHED in authenticate() --> userService"));      //for debugging
     db.users.findOne({ username: username }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user && bcrypt.compareSync(password, user.hash)) {
             // authentication successful
             deferred.resolve(jwt.sign({ sub: user._id }, config.secret));
+            console.log(chalk.green("Found user --> userService"));      //for debugging
         } else {
             // authentication failed
             deferred.resolve();
