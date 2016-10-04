@@ -30,6 +30,7 @@ function authenticate(username, password) {
             // authentication successful
             deferred.resolve(jwt.sign({ sub: user._id }, config.secret));
             console.log(chalk.green("Found user --> userService"));      //for debugging
+            console.log(user._id);
         } else {
             // authentication failed
             deferred.resolve();

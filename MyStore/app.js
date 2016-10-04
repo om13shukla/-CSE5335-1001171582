@@ -12,13 +12,13 @@ var config=require('./config.json');
 //var validator = require('express-validator');
 
 
-var index = require('./routes/index');
-var register = require('./routes/register');
+var index = require('./routes/index');                  //for practice
+var register = require('./routes/register');            //for practice
 var home = require('./routes/home');
-var userService = require( './routes/userService');
+var userService = require( './routes/userService');     //for practice
 
-var userControler= require('./routes/userControler');
-var appController= require('./routes/appController');   
+var userControler= require('./routes/userControler');   //for practice
+var appController= require('./routes/appController');   //for practice
 
 var app = express();
 
@@ -44,11 +44,12 @@ app.use('/index', index);
 app.use('/register', register);
 app.use('/', home);
 //app.use('/', appController);
+
 app.use('/api/users', userControler);
 
 
 // use JWT auth to secure the api
-//app.use('/home', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register']}));
+//app.use('/', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register']}));
 
 
 // catch 404 and forward to error handler

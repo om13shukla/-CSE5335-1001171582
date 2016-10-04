@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var chalk = require('chalk');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -13,12 +14,15 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function (req, res) {
     // authenticate using api to maintain clean separation between layers
+    console.log(chalk.yellow("index-post happns  here --> calling userControl next"));
     request.post({
         url: 'http://localhost:3000/api/users/authenticate',
         form: req.body,
         json: true
     }, function (error, response, body) {
         if (error) {
+            console.log(chalk.yellow("Error occurd  here callback() for userControl"));
+            console.log(error);
             return res.render('index', { error: 'An error occurred' });
         }
 
